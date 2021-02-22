@@ -23,7 +23,7 @@
     <ProjectGuid>{6B4435BB-D595-4E61-8036-5923630D52B6}</ProjectGuid>
     <RootNamespace>GAME1017ShooterExample</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>GAME1017_A1_WanboWang_MiguelPenalver</ProjectName>
+    <ProjectName>GAME1017__A1_IngramZackary</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
