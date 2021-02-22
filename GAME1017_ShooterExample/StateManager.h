@@ -12,11 +12,11 @@ private://public properties
 public: //Public methods
 	static void Update();
 	static void Render();
-	static void PushState(State* pState); // Used when going to Pause State
-	static void PopState();// Used when leaving PauseState;
+	static void PushState(State* pState); 
+	static void PopState();
 	static void ChangeState(State* pState);
-	static void Quit(); // Used for Cleaning up
-	static vector<State*>& GetStates(); // Returns a reference to our State* vector - Mean 
+	static void Quit(); 
+	static vector<State*>& GetStates(); 
 	static const bool StateChanging();
 private://Private methods
 	StateManager() {}

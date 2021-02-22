@@ -13,7 +13,7 @@ double MathManager::Distance(const SDL_FRect* r1, const SDL_FRect* r2)
 
 double MathManager::AngleBetweenPoints(const double dy, const double dx)
 {
-	return atan2(dy, dx); // In radians.
+	return atan2(dy, dx); 
 }
 
 void MathManager::SetDeltas(const double angle, double& dx, double& dy, double fx, double fy)

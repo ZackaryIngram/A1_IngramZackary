@@ -12,29 +12,35 @@ using namespace std;
 
 class GameObject
 {
-public: // Methods.
+public: 
 	virtual ~GameObject() {};
 	virtual void Update() = 0;
 	virtual void Render() = 0;
+	//Getter
 	SDL_FRect* GetDst() { return &m_dst; }
 	const bool GetEnabled() const { return m_enabled; }
+	//Setter
 	void SetEnabled(const bool e) { m_enabled = e; }
-protected: // Attributes.
+protected: 
 	SDL_FRect m_dst;
 	bool m_enabled;
-protected: // Methods.
+protected: 
 	GameObject() :m_dst({ 0,0,0,0 }), m_enabled(true) {}
 	GameObject(const SDL_FRect d) :m_dst(d), m_enabled(true) {}
 };
 
+
 class SpriteObject : public GameObject
 {
 public:
+
 	virtual void Render() = 0;
 	SDL_Rect* GetSrc() { return &m_src; }
-protected: // Attributes.
+
+protected: 
 	SDL_Rect m_src;
-protected: // Methods.
+
+protected: 
 	SpriteObject(const SDL_Rect s, const SDL_FRect d) :GameObject(d), m_src(s) {}
 };
 
@@ -42,125 +48,29 @@ class AnimatedSpriteObject : public SpriteObject
 {
 public:
 	virtual void Render() = 0;
-protected: // Attributes.
+protected: 
 	unsigned short m_frame, m_frameMax, m_sprite, m_spriteMin, m_spriteMax;
-protected: // Methods.
-	//AnimatedSpriteObject(const SDL_Rect s, const SDL_FRect d) :SpriteObject(s, d),
-	//	m_frame(0), m_frameMax(0), m_sprite(0), m_spriteMin(0), m_spriteMax(0) {}
-	//void SetAnimation(const unsigned short fMax, const unsigned short sMin, const unsigned short sMax,
-	//	const int srcY = 0)
-	//{
-	//	m_frame = 0;
-	//	m_frameMax = fMax;
-	//	m_sprite = m_spriteMin = sMin;
-	//	m_spriteMax = sMax;
-	//	m_src.x = m_src.w * m_sprite;
-	//	m_src.y = srcY;
-	//}
-	//void Animate()
-	//{
-	//	if (m_frame++ == m_frameMax)
-	//	{
-	//		m_frame = 0;
-	//		if (++m_sprite == m_spriteMax)
-	//			m_sprite = m_spriteMin; 
-	//		m_src.x = m_src.w * m_sprite; 
-	//	}
-	//}
+
+	
 };
 
 class Sprite
 {
 public:
-	SDL_Rect m_src; // Source rectangle.
-	SDL_Rect m_dst; // Destination rectangle.
-	SDL_Rect m_playercoDst;
+	SDL_Rect m_src; 
+	SDL_Rect m_dst; 
+	SDL_Rect m_playerDst;
 
 	void SetRekts(const SDL_Rect s, const SDL_Rect d) //non default construcotr
 	{
 		m_src = s;
 		m_dst = d;
 	}
+
 	SDL_Rect* GetSrc() { return &m_src; }
 	SDL_Rect* GetDst() { return &m_dst; }
-	SDL_Rect* GetPlayercoDst() { return &m_playercoDst; }
-
-	
+	SDL_Rect* GetPlayerDst() { return &m_playerDst; }
 };
-
-class Bullet
-{
-private:
-
-	SDL_Rect m_pFireDst;
-
-public:
-
-	Bullet(SDL_Point spawnLoc = { 1024, 384 })
-	{
-		cout << "CONSTRUCTING Bullet \n";
-		this->m_pFireDst.x = spawnLoc.x;
-		this->m_pFireDst.y = spawnLoc.y;
-		this->m_pFireDst.w = 14;
-		this->m_pFireDst.h = 7;
-
-	}
-	~Bullet() // Destructor
-	{
-		cout << "De-Allocating Bullet at " << &(*this) << endl;
-
-	}
-	//void SetLoc(SDL_Point newloc)
-	//{
-	//	m_pFireDst.x = newloc.x;
-	//	m_pFireDst.y = newloc.y;
-	//}
-	void Update()
-	{
-		this->m_pFireDst.x +=5;
-	}
-	void Render(SDL_Renderer* rend, SDL_Texture* text, const SDL_Rect* src)
-	{
-		SDL_RenderCopy(rend, text, src, &m_pFireDst);
-	}
-	SDL_Rect* GetRekt() { return &m_pFireDst; }
-};
-
-//class EnemyBullet
-//{
-//private:
-//
-//	SDL_Rect m_pWaterDst;
-//	Mix_Chunk* waterball = nullptr;
-//public:
-//
-//
-//	EnemyBullet(SDL_Point spawnLoc = { 1024, 384 })
-//	{
-//		cout << "CONSTRUCTING Enemy Bullet\n";
-//		this->m_pWaterDst.x = spawnLoc.x;
-//		this->m_pWaterDst.y = spawnLoc.y;
-//		this->m_pWaterDst.w = 8;
-//		this->m_pWaterDst.h = 8;
-//
-//	}
-//	~EnemyBullet() // Destructor
-//	{
-//		cout << "De-Allocating Enemy Bullet at " << &(*this) << endl;
-//
-//	}
-//	void UpdateEnemyB()
-//	{
-//		this->m_pWaterDst.x -= 5;
-//	}
-//	void Render(SDL_Renderer* rend, SDL_Texture* text, const SDL_Rect* src)
-//	{
-//		SDL_RenderCopy(rend, text, src, &m_pWaterDst);
-//	}
-//
-//	SDL_Rect* GetRekt() { return &m_pWaterDst; }
-//
-//};
 
 class Enemies
 {
@@ -172,7 +82,7 @@ public:
 
 	Enemies(SDL_Point spawnLoc = { 1024, 500 })
 	{
-		cout << "CONSTRUCTING Enemy \n";
+		cout << "Creating Enemy \n";
 		this->m_pEnemyDst.x = spawnLoc.x;
 		this->m_pEnemyDst.y = spawnLoc.y;
 		this->m_pEnemyDst.w = 86;
@@ -213,9 +123,9 @@ private:
 	SDL_Rect m_enemycoDst;
 public:
 
-	Enemy(SDL_Point spawnLoc = { 1024, 500 })
+	Enemy(SDL_Point spawnLoc = { 1020, 200 })
 	{
-		cout << "CONSTRUCTING Bird1 \n";
+		cout << "Creating Enemy \n";
 		this->m_enemyDst.x = spawnLoc.x;
 		this->m_enemyDst.y = 0;
 		this->m_enemyDst.w = 95 / 3 * 2;
@@ -228,13 +138,13 @@ public:
 	}
 	~Enemy() // Destructor
 	{
-		cout << "De-Allocating bird1 at " << &(*this) << endl;
+		cout << "De-Allocating Enemy at " << &(*this) << endl;
 
 	}
 	void UpdateEnemy()
 	{
-		this->m_enemyDst.x -= 5;
-		this->m_enemycoDst.x -= 5;
+		this->m_enemyDst.x -= 3;
+		this->m_enemycoDst.x -= 3;
 	}
 	void Render(SDL_Renderer* rend, SDL_Texture* text, const SDL_Rect* src)
 	{

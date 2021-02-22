@@ -15,8 +15,8 @@ public:
 
 protected:
 	std::string m_key;
-	enum BtnState { STATE_UP, STATE_OVER, STATE_DOWN } m_state; // enum defined locally.
-	virtual void Execute() = 0; // Button3 is an abstract base class.
+	enum BtnState { STATE_UP, STATE_OVER, STATE_DOWN } m_state; 
+	virtual void Execute() = 0; 
 };
 
 class PauseButton : public Button

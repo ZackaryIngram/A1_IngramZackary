@@ -33,9 +33,6 @@
     <ClCompile Include="EventManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
-    <ClCompile Include="MathManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
     <ClCompile Include="StateManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
@@ -44,9 +41,6 @@
     </ClCompile>
     <ClCompile Include="SoundManager.cpp">
       <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Primitives.cpp">
-      <Filter>Objects</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>Objects</Filter>
@@ -60,15 +54,18 @@
     <ClCompile Include="States.cpp">
       <Filter>States</Filter>
     </ClCompile>
+    <ClCompile Include="MathManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Primitive.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CollisionManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="EventManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="MathManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="StateManager.h">
@@ -83,9 +80,6 @@
     <ClInclude Include="GameObject.h">
       <Filter>Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Primitives.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>Objects</Filter>
     </ClInclude>
@@ -95,38 +89,15 @@
     <ClInclude Include="States.h">
       <Filter>States</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Dat\Level1.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Dat\Tiledata.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
+    <ClInclude Include="MathManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitive.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Img\start.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Img\TitleBack.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Img\Start2.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Img\logo.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Img\dragon.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Img\fireball.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Img\dragon1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Img\darkhole.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

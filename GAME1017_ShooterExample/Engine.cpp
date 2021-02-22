@@ -14,20 +14,13 @@
 #define BGSCROLL 2 // Could these scroll/speed values be handled in the class? Yes. Consider it!
 #define PSPEED 6
 using namespace std;
-//Engine::Engine() :m_iESpawn(0), m_iESpawnMax(60), m_pivot({ 0,0 })
-//{	// Again showing a mix of either initializers or in-body initialization. Initializers happen first.
-//	m_bRunning = m_bEBNull = m_bENull = m_bPBNull = false; // Setting all to false.
-//	m_bCanShoot = true;
-//	cout << "Engine class constructed!" << endl; 
-//}
+
 bool Engine::Init(const char* title, int xpos, int ypos, int width, int height, int flags)
 {
 	cout << "Initializing game." << endl;
 	srand((unsigned)time(NULL));
-	// Attempt to initialize SDL.
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
-		// Create the window.
 		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
 		if (m_pWindow != nullptr) // Window init success.
 		{
@@ -50,7 +43,7 @@ bool Engine::Init(const char* title, int xpos, int ypos, int width, int height, 
 
 	STMA::PushState(new TitleState());
 
-	m_bRunning = true; // Everything is okay, start the engine.
+	m_bRunning = true; 
 	cout << "Initialization!" << endl;
 	return true;
 }
@@ -58,7 +51,6 @@ bool Engine::Init(const char* title, int xpos, int ypos, int width, int height, 
 void Engine::Wake()
 {
 	m_start = SDL_GetTicks();
-	//New stuff for Delta Time
 	m_deltaTime = (m_start - m_startLast) / 1000.0f;
 	m_startLast = m_start;
 
@@ -72,20 +64,18 @@ void Engine::HandleEvents()
 void Engine::Update()
 {
 	StateManager::Update();
-	
 }
 
 void Engine::Render()
 {
 	STMA::Render();
-	
 }
 
 void Engine::Sleep()
 {
 	m_end = SDL_GetTicks();
 	m_delta = m_end - m_start;
-	if (m_delta < m_fps) // Engine has to sleep.
+	if (m_delta < m_fps) 
 		SDL_Delay(m_fps - m_delta);
 }
 

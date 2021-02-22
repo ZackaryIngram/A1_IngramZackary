@@ -26,7 +26,7 @@ void TextureManager::Load(const char* path, const std::string key)
 	}
 	else
 	{
-		s_textures.emplace(key, temp); //Add to map
+		s_textures.emplace(key, temp); 
 		std::cout << "Successfully loaded Texture ' " << key << " '!" << std::endl;
 	}
 	
@@ -37,7 +37,7 @@ void TextureManager::UnLoad(const std::string key)
 {
 	if(s_textures.find(key) != s_textures.end())
 	{
-		SDL_DestroyTexture(s_textures[key]); //Dealocates Texture
+		SDL_DestroyTexture(s_textures[key]); 
 		s_textures.erase(key); // Removes texture pointer from map
 	}
 	else

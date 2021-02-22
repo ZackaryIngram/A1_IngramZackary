@@ -1,14 +1,14 @@
 #include "StateManager.h"
 
-void StateManager::Update() // Invokes Update of the current State
+void StateManager::Update() 
 {
 	if (!s_states.empty())
 	{
-		s_states.back()->Update(); //s_states back() represents the current state by pointer
+		s_states.back()->Update(); 
 	}
 }
 
-void StateManager::Render()// Invokes Render of the current State
+void StateManager::Render()
 {
 	if (!s_states.empty())
 	{
@@ -16,15 +16,15 @@ void StateManager::Render()// Invokes Render of the current State
 	}
 }
 
-void StateManager::PushState(State* pState) // Transitioning to Pause state from GameState
+void StateManager::PushState(State* pState) 
 {
 	s_states.push_back(pState);
 	s_states.back()->Enter();
 }
 
-void StateManager::PopState() // Invoke going back to Gamestate from Pause state
+void StateManager::PopState() 
 {
-	if (s_states.size() <= 1) return;// if only one state in vector, return
+	if (s_states.size() <= 1) return;
 	if (!s_states.empty())
 	{
 		s_states.back()->Exit();
